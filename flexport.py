@@ -1,4 +1,4 @@
-class flexport():
+class flxp():
     """ Klasse für den Export von Werten in eine CSV Datei
         Class for export data into csv file
 
@@ -35,8 +35,17 @@ class flexport():
         print("")
         print(data)
 
-    def export(self,data,wp):
-        file = open(self.path + self.filename + "." + self.extension,wp)
-        dataline = ";".join(data)
-        file.write("\n"+dataline)
-        file.close()
+    def flexport(self,data,wp):
+        try:
+            file = open(self.path + self.filename + "." + self.extension,"r")
+            file.close()
+            file = open(self.path + self.filename + "." + self.extension,wp)
+            dataline = ";".join(data)
+            file.write("\n"+dataline)
+            file.close()
+  
+        except:
+            file = open(self.path + self.filename + "." + self.extension,wp)
+            dataline = ";".join(data)
+            file.write(dataline)
+            file.close()
